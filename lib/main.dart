@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Codemagic Demo',
       theme: new ThemeData(
+        fontFamily: 'Raleway',
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
