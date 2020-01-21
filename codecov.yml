@@ -2,8 +2,7 @@ codecov:
   token: 708d523b-db0c-431b-9379-26aac1cb690b
 
 coverage:
-  status:
-    project:
-      target: 100%
-      threshold: null
+  range: 100..100
+  round: down
+  precision: 2
 
