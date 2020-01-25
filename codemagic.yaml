@@ -1,0 +1,8 @@
+workflows:
+  my-workflow-(copy):
+    name: My workflow (Copy)
+    cache:
+      cache_paths:
+        - $HOME/test
+    scripts:
+      - echo "Hello world!"
