@@ -1,5 +1,5 @@
 workflows:
-  sonar-scanner
+  sonar-scanner:
     name: Sonar Scanner
     scripts:
       - curl -O https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-macosx.zip
