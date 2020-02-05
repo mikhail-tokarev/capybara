@@ -11,7 +11,7 @@ workflows:
         cd $FCI_BUILD_DIR
         flutter test --coverage
       - |
-        cc=$(lcov --list coverage/lcov.info | sed -n "s/.*Total:|\(.*\)%.*/\1/p")
-        echo "Code Coverage: ${cc}%"
-        [[ "$cc" -lt 99 ]] && exit 1
+        cov=$(lcov --list $FCI_BUILD_DIR/coverage/lcov.info | sed -n "s/.*Total:|\(.*\)%.*/\1/p")
+        echo "Code Coverage: ${cov}%"
+        [[ "$cov" -lt 90 ]] && exit 1
 
