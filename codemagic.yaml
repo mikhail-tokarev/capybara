@@ -3,7 +3,7 @@ workflows:
     name: Code Coverage
     environment:
       vars:
-        CODE_COVERAGE_TARGET: "95"
+        CODE_COVERAGE_TARGET: "99"
     scripts:
       - HOMEBREW_NO_AUTO_UPDATE=1 brew install lcov
       - echo "Hello world!"
@@ -13,9 +13,5 @@ workflows:
       - |
         code_coverage=$(lcov --list $FCI_BUILD_DIR/coverage/lcov.info | sed -n "s/.*Total:|\(.*\)%.*/\1/p")
         echo "Code Coverage: ${code_coverage}%"
-        if (( $code_coverage < 95 )); then echo "less 95"; fi
-        if (( $code_coverage < 99 )); then echo "less 99"; fi
-
-#        if (( $(echo "$code_coverage < 95" | bc) )); then echo "less 95"; fi
-#        if (( $(echo "$code_coverage < 99" | bc) )); then echo "less 99"; fi
+        if (( $(echo "$code_coverage < $CODE_COVERAGE_TARGET" | bc) )); then exit 1; fi
 
