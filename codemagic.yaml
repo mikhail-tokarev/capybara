@@ -1,6 +1,5 @@
 workflows:
   code-coverage:
-    name: Code Coverage
     environment:
       vars:
         CODE_COVERAGE_TARGET: "95"
