@@ -5,6 +5,7 @@ workflows:
       cache_paths:
         - $HOME/test
     scripts:
+      - brew install lcov
       - echo "Hello world!"
       - |
         cd $FCI_BUILD_DIR
