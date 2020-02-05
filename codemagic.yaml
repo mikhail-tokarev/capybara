@@ -15,6 +15,6 @@ workflows:
 
         code_coverage=$(lcov --list $FCI_BUILD_DIR/coverage/lcov.info | sed -n "s/.*Total:|\(.*\)%.*/\1/p")
         echo "Code Coverage: ${code_coverage}%"
-        (($code_coverage < 95)) && echo "less 95"
-        (($code_coverage < 99)) && echo "less 99"
+        '(($code_coverage < 95)) && echo "less 95"'
+        '(($code_coverage < 99)) && echo "less 99"'
 
