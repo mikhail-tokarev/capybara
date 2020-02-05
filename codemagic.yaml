@@ -1,8 +1,16 @@
 workflows:
-  my-workflow-(copy):
-    name: My workflow (Copy)
+  code-coverage:
+    name: Code Coverage
     cache:
       cache_paths:
         - $HOME/test
     scripts:
       - echo "Hello world!"
+      - |
+        cd $FCI_BUILD_DIR
+        flutter test --coverage
+      - |
+        cc=$(lcov --list coverage/lcov.info | sed -n "s/.*Total:|\(.*\)%.*/\1/p")
+        echo "Code Coverage: $cc"
+        if [[ "$cc" -lt 90 ]]; exit 1
+
