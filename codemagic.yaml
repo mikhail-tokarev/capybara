@@ -1,9 +1,8 @@
 workflows:
   code-coverage:
     name: Code Coverage
-    cache:
-      cache_paths:
-        - $HOME/test
+    env:
+      CODE_COVERAGE_TARGET: 99
     scripts:
       - HOMEBREW_NO_AUTO_UPDATE=1 brew install lcov
       - echo "Hello world!"
