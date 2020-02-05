@@ -11,10 +11,8 @@ workflows:
         cd $FCI_BUILD_DIR
         flutter test --coverage
       - |
-        #!/bin/bash
-
         code_coverage=$(lcov --list $FCI_BUILD_DIR/coverage/lcov.info | sed -n "s/.*Total:|\(.*\)%.*/\1/p")
         echo "Code Coverage: ${code_coverage}%"
-        '(($code_coverage < 95)) && echo "less 95"'
-        '(($code_coverage < 99)) && echo "less 99"'
+        if [[ $(echo "$code_coverage < 95" | bc) ]]; then echo "less 95"; fi
+        if [[ $(echo "$code_coverage < 99" | bc) ]]; then echo "less 99"; fi
 
