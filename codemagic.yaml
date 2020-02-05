@@ -5,7 +5,7 @@ workflows:
       cache_paths:
         - $HOME/test
     scripts:
-      - brew install lcov
+      - HOMEBREW_NO_AUTO_UPDATE=1 brew install lcov
       - echo "Hello world!"
       - |
         cd $FCI_BUILD_DIR
@@ -13,5 +13,7 @@ workflows:
       - |
         cov=$(lcov --list $FCI_BUILD_DIR/coverage/lcov.info | sed -n "s/.*Total:|\(.*\)%.*/\1/p")
         echo "Code Coverage: ${cov}%"
-        [[ "$cov" -lt 90 ]] && exit 1
+        if [[ "$cov" -lt 90 ]]; then
+          exit 1
+        fi
 
