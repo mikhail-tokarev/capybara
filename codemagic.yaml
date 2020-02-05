@@ -1,25 +1,12 @@
 workflows:
-  sonar-scanner:
-    scripts:
-      - curl -O https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-macosx.zip
-      - unzip sonar-scanner-cli-4.2.0.1873-macosx.zip
-      - sonar-scanner-4.2.0.1873-macosx/bin/sonar-scanner 
-          -Dsonar.projectKey=mikhail-tokarev_capybara
-          -Dsonar.organization=capybara
-          -Dsonar.sources=.
-          -Dsonar.host.url=https://sonarcloud.io
-          -Dsonar.login=b2b9f4d6159f8bf97353bf98e62b1a0e45ce554c
   code-coverage:
     name: Code Coverage
     environment:
       vars:
-        CODE_COVERAGE_TARGET: "99"
+        CODE_COVERAGE_TARGET: "95"
     scripts:
       - HOMEBREW_NO_AUTO_UPDATE=1 brew install lcov
-      - echo "Hello world!"
-      - |
-        cd $FCI_BUILD_DIR
-        flutter test --coverage
+      - flutter test --coverage
       - |
         code_coverage=$(lcov --list $FCI_BUILD_DIR/coverage/lcov.info | sed -n "s/.*Total:|\(.*\)%.*/\1/p")
         echo "Code Coverage: ${code_coverage}%"
