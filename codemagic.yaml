@@ -1,4 +1,16 @@
 workflows:
+  sonar-scanner
+    name: Sonar Scanner
+    scripts:
+      - curl -O https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-macosx.zip
+      - unzip sonar-scanner-cli-4.2.0.1873-macosx.zip
+      - >
+	sonar-scanner-4.2.0.1873-macosx/bin/sonar-scanner 
+                      -Dsonar.projectKey=mikhail-tokarev_capybara
+                      -Dsonar.organization=capybara
+                      -Dsonar.sources=.
+                      -Dsonar.host.url=https://sonarcloud.io
+                      -Dsonar.login=b2b9f4d6159f8bf97353bf98e62b1a0e45ce554c
   code-coverage:
     name: Code Coverage
     environment:
