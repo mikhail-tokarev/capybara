@@ -5,8 +5,7 @@ workflows:
         CODECOV_TOKEN: "708d523b-db0c-431b-9379-26aac1cb690b"
     scripts:
       - flutter test --coverage
-      - |
-        bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN -f $FCI_BUILD_DIR/coverage/lcov.info
+      - curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN -f $FCI_BUILD_DIR/coverage/lcov.info
   code-coverage:
     environment:
       vars:
