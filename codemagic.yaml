@@ -1,9 +1,7 @@
 workflows:
   test:
     scripts:
-      - |
-        #!/bin/sh
-        echo "Hello world!"
+      - echo "Hello world!"
 
   codecov-io:
     environment:
