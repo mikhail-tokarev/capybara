@@ -1,4 +1,10 @@
 workflows:
+  test:
+    scripts:
+      - |
+        #!/usr/bin/env sh
+        echo "Hello world!"
+
   codecov-io:
     environment:
       vars:
