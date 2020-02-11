@@ -2,7 +2,7 @@ workflows:
   test:
     scripts:
       - |
-        #!/usr/bin/env sh
+        #!/bin/sh
         echo "Hello world!"
 
   codecov-io:
