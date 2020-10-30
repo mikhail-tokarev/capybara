@@ -21,4 +21,3 @@ workflows:
         code_coverage=$(lcov --list $FCI_BUILD_DIR/coverage/lcov.info | sed -n "s/.*Total:|\(.*\)%.*/\1/p")
         echo "Code Coverage: ${code_coverage}%"
         if (( $(echo "$code_coverage < $CODE_COVERAGE_TARGET" | bc) )); then exit 1; fi
-
