@@ -2,6 +2,9 @@ workflows:
   test:
     scripts:
       - echo "Hello world!"
+    triggering:
+      events:
+        - push
 
   codecov-io:
     environment:
