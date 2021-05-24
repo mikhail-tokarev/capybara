@@ -2,6 +2,10 @@ workflows:
   test:
     scripts:
       - echo "Hello world!"
+      - mkdir node_modules
+    cache:
+      cache_paths:
+        - ./node_modules
     triggering:
       events:
         - push
